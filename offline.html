@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hors ligne - Rising Digital IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1e3a8a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .offline-container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(251, 191, 36, 0);
+            }
+        }
+
+        .offline-icon svg {
+            width: 60px;
+            height: 60px;
+            stroke: #fbbf24;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .offline-status {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .offline-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .offline-features {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .offline-features h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #fbbf24;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid #22c55e;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            color: #22c55e;
+            margin-right: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1e3a8a;
+            box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .connection-status {
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49%, 100% {
+                opacity: 1;
+            }
+            50%, 99% {
+                opacity: 0.3;
+            }
+        }
+
+        .status-indicator.online {
+            background: #22c55e;
+            animation: none;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .offline-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .offline-icon svg {
+                width: 50px;
+                height: 50px;
+            }
+
+            .offline-description {
+                font-size: 0.95rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Motifs africains subtils */
+        .offline-container::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(251, 191, 36, 0.03) 35px, rgba(251, 191, 36, 0.03) 70px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .offline-container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 9l2 2m4-4l2 2m4-4l2 2m4-4l2 2m4-4l2 2" />
+                <path d="M1 9l2-2m4 4l2-2m4 4l2-2m4 4l2-2m4 4l2-2" />
+                <circle cx="12" cy="12" r="9" />
+            </svg>
+        </div>
+
+        <h1>Vous êtes hors ligne</h1>
+        <p class="offline-status">Pas de connexion Internet</p>
+        <p class="offline-description">
+            Mais ne vous inquiétez pas ! Rising Digital IA fonctionne complètement hors ligne. 
+            Vous pouvez continuer à explorer l'application et consulter le contenu en cache.
+        </p>
+
+        <div class="offline-features">
+            <h3>Disponible hors ligne :</h3>
+            <ul class="feature-list">
+                <li>Accès à tous les services et portfolio</li>
+                <li>Consultation des informations de contact</li>
+                <li>Navigation complète de l'application</li>
+                <li>Expérience fluide et rapide</li>
+            </ul>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="location.reload()">
+                Rafraîchir la page
+            </button>
+            <button class="btn btn-secondary" onclick="goHome()">
+                Retour à l'accueil
+            </button>
+        </div>
+
+        <div class="connection-status">
+            <span class="status-indicator"></span>
+            <span id="status-text">Vérification de la connexion...</span>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Gestion de l'état de connexion
+         */
+        function updateConnectionStatus() {
+            const statusIndicator = document.querySelector('.status-indicator');
+            const statusText = document.getElementById('status-text');
+
+            if (navigator.onLine) {
+                statusIndicator.classList.add('online');
+                statusText.textContent = 'Connexion rétablie - Rechargement en cours...';
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                statusIndicator.classList.remove('online');
+                statusText.textContent = 'Toujours hors ligne - Reconnexion en attente...';
+            }
+        }
+
+        function goHome() {
+            window.location.href = '/';
+        }
+
+        // Vérifier la connexion au chargement
+        window.addEventListener('load', updateConnectionStatus);
+
+        // Écouter les changements de connexion
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+
+        // Vérifier périodiquement la connexion
+        setInterval(() => {
+            if (navigator.onLine) {
+                updateConnectionStatus();
+            }
+        }, 3000);
+
+        // Analytics: Enregistrer les visites offline
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.ready.then(() => {
+                console.log('Service Worker prêt - Mode offline actif');
+            });
+        }
+    </script>
+</body>
+</html>

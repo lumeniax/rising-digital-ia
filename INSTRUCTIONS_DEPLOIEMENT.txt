@@ -1,0 +1,209 @@
+RISING DIGITAL IA - INSTRUCTIONS DE DEPLOIEMENT
+================================================
+
+Bienvenue ! Ce fichier contient toutes les instructions pour deployer votre site
+sur GitHub et Netlify.
+
+FICHIERS DE CONFIGURATION INCLUS
+=================================
+
+✅ netlify.toml              - Configuration Netlify (build, redirects, headers)
+✅ .github/workflows/deploy.yml - GitHub Actions (CI/CD automatique)
+✅ README.md                 - Documentation complete du projet
+✅ DEPLOYMENT.md             - Guide detaille de deploiement
+✅ GITHUB_NETLIFY_SETUP.md   - Instructions etape par etape
+✅ package.json              - Dependances du projet
+✅ pnpm-lock.yaml            - Verrous des dependances
+✅ .gitignore                - Fichiers a ignorer dans Git
+✅ client/                   - Code React/Frontend
+✅ server/                   - Code serveur (optionnel)
+
+DEMARRAGE RAPIDE (5 MINUTES)
+=============================
+
+ETAPE 1 : Creer un depot GitHub
+--------------------------------
+1. Allez sur https://github.com/new
+2. Nommez le depot : rising-digital-ia
+3. Choisissez "Public"
+4. Cliquez sur "Create repository"
+
+ETAPE 2 : Pousser le code sur GitHub
+-------------------------------------
+cd rising-digital-ia
+git init
+git add .
+git commit -m "Initial commit: Rising Digital IA website"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/rising-digital-ia.git
+git push -u origin main
+
+Remplacez YOUR_USERNAME par votre nom d'utilisateur GitHub.
+
+ETAPE 3 : Configurer Netlify
+-----------------------------
+1. Allez sur https://netlify.com
+2. Cliquez sur "Add new site" → "Import an existing project"
+3. Selectionnez "GitHub" comme provider
+4. Autorisez Netlify a acceder a vos depots
+5. Selectionnez le depot "rising-digital-ia"
+6. Configurez les parametres :
+   - Build command : pnpm build
+   - Publish directory : dist
+7. Cliquez sur "Deploy site"
+
+ETAPE 4 : Verifier le deploiement
+---------------------------------
+- Attendez que le build soit termine (environ 2-3 minutes)
+- Cliquez sur le lien fourni par Netlify pour voir votre site en direct
+- Verifiez que toutes les pages fonctionnent correctement
+
+✅ C'est fait ! Votre site est maintenant en ligne !
+
+DOCUMENTATION COMPLETE
+======================
+
+Pour des instructions detaillees, consultez les fichiers suivants :
+
+1. DEPLOYMENT.md
+   - Guide complet de deploiement
+   - Depannage des erreurs courantes
+   - Configuration des domaines personnalises
+   - Gestion des variables d'environnement
+
+2. GITHUB_NETLIFY_SETUP.md
+   - Instructions etape par etape
+   - Configuration de GitHub Actions
+   - Gestion des secrets GitHub
+   - Surveillance des deploiements
+
+3. README.md
+   - Documentation du projet
+   - Structure des fichiers
+   - Scripts disponibles
+   - Technologies utilisees
+
+COMMANDES UTILES
+================
+
+Developpement local :
+  pnpm dev              # Lancer le serveur de developpement
+  pnpm build            # Construire pour la production
+  pnpm preview          # Previsualiser la build
+  pnpm check            # Verifier les types TypeScript
+  pnpm format           # Formater le code
+
+Git :
+  git status            # Voir les changements
+  git add .             # Ajouter tous les fichiers
+  git commit -m "..."   # Faire un commit
+  git push              # Pousser vers GitHub
+  git pull              # Recuperer les changements
+
+DOMAINE PERSONNALISE (OPTIONNEL)
+=================================
+
+Pour utiliser votre propre domaine (ex: risingdigitalai.com) :
+
+1. Sur Netlify, allez dans "Site settings" → "Domain management"
+2. Cliquez sur "Add custom domain"
+3. Entrez votre domaine
+4. Suivez les instructions pour configurer les DNS
+5. Attendez que le DNS se propage (jusqu'a 24 heures)
+
+SECURITE
+========
+
+✅ HTTPS automatique sur Netlify
+✅ Headers de securite configures
+✅ Protection contre les attaques courantes
+✅ Validation des formulaires
+✅ Pas de donnees sensibles en dur dans le code
+
+APRES LE DEPLOIEMENT
+====================
+
+Mettre a jour le site :
+  1. Faites des modifications locales
+  2. Testez avec : pnpm dev
+  3. Commitez : git add . && git commit -m "Description"
+  4. Poussez : git push origin main
+  5. Netlify deploiera automatiquement !
+
+Surveiller les deploiements :
+  - Sur Netlify, allez dans "Deploys"
+  - Vous verrez l'historique de tous les deploiements
+  - Cliquez sur un deploiement pour voir les details
+
+Analyser les performances :
+  - Sur Netlify, allez dans "Analytics"
+  - Consultez les statistiques de visite
+  - Identifiez les pages les plus populaires
+
+DEPANNAGE
+=========
+
+Erreur : "pnpm not found"
+  → Verifiez que pnpm-lock.yaml est dans le depot
+  → Netlify doit detecter pnpm automatiquement
+
+Erreur : "Build failed"
+  → Verifiez les logs de build sur Netlify
+  → Testez localement : pnpm build
+  → Assurez-vous que toutes les dependances sont installees
+
+Site affiche une page blanche
+  → Verifiez la console du navigateur pour les erreurs
+  → Assurez-vous que les chemins d'images sont corrects
+  → Verifiez que dist est le bon repertoire de publication
+
+Netlify ne detecte pas les changements
+  → Attendez quelques secondes apres le push
+  → Verifiez que le webhook GitHub est configure
+  → Allez dans "Deploy settings" et cliquez sur "Trigger deploy"
+
+SUPPORT
+=======
+
+Pour toute question ou probleme :
+
+WhatsApp : +228 93 39 25 15
+Email : yesborntoshine@gmail.com
+
+Consultez aussi :
+- Documentation Netlify : https://docs.netlify.com
+- Documentation Vite : https://vitejs.dev
+- Documentation React : https://react.dev
+
+CHECKLIST FINAL
+===============
+
+Avant de considerer le deploiement comme termine :
+
+□ Depot GitHub cree
+□ Code pousse sur GitHub
+□ Netlify connecte au depot
+□ Build command configure : pnpm build
+□ Publish directory configure : dist
+□ Site deploye avec succes
+□ URL Netlify fonctionnelle
+□ Toutes les pages accessibles
+□ Formulaire de contact fonctionnel
+□ Bouton WhatsApp flottant visible
+□ Images chargees correctement
+□ Pas d'erreurs dans la console
+□ Responsive design teste (mobile, tablette, desktop)
+□ SSL/HTTPS active
+□ Domaine personnalise configure (optionnel)
+
+BRAVO !
+=======
+
+Votre site Rising Digital IA est maintenant en ligne et pret a servir vos clients !
+
+Prochaines etapes :
+1. Partager le lien avec vos clients et partenaires
+2. Optimiser le SEO (ajouter des mots-cles, meta descriptions)
+3. Mettre en place l'analytics pour suivre les visiteurs
+4. Ajouter du contenu regulierement (blog, actualites)
+5. Maintenir et mettre a jour le site regulierement
