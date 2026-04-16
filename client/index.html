@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Rising Digital IA - L'Innovation au Service de l'Afrique</title>
+    <meta name="google-site-verification" content="4uBsGRXoD1ywnKuOdx2uGXU_30ChT7mLQqYhmxtyt0Y" />
+    <meta name="description" content="Rising Digital IA - Agence digitale spécialisée en intelligence artificielle pour PME, églises et entrepreneurs africains." />
+    <meta name="theme-color" content="#1E3A8A" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Rising Digital IA" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Rising Digital IA" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#1E3A8A" />
+    
+    <!-- Manifest and Icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="shortcut icon" href="/icon-192.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA Installation Handler -->
+    <script src="/pwa-install-handler.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js', {
+            scope: '/',
+            updateViaCache: 'none',
+          }).catch(err => console.error('[SW] Registration failed:', err));
+        });
+      }
+    </script>
+    
+    <!-- Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="514f2929-9523-48d5-86a4-a461523e761a"></script>
+  </body>
+
+</html>
