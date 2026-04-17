@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://msa37.github.io/sitemap.xml
+Sitemap: https://rising-digital-ia.netlify.app/sitemap.xml

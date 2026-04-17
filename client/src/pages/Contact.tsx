@@ -26,15 +26,34 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    }, 3000);
+    setIsSubmitting(true);
+    setError('');
+    try {
+      const formBody = new URLSearchParams({
+        'form-name': 'contact',
+        ...formData,
+      });
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody.toString(),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        setError('Une erreur est survenue. Veuillez réessayer.');
+      }
+    } catch {
+      setError('Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -124,7 +143,13 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  name="contact"
+                  data-netlify="true"
+                  className="space-y-6"
+                >
+                  <input type="hidden" name="form-name" value="contact" />
                   <div>
                     <label className="block text-sm font-bold text-blue-900 mb-2">
                       Nom Complet *
@@ -212,11 +237,16 @@ export default function Contact() {
                     ></textarea>
                   </div>
 
+                  {error && (
+                    <p className="text-red-600 text-sm font-semibold">{error}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full px-8 py-4 bg-blue-900 text-white font-bold rounded-lg hover:bg-blue-800 transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full px-8 py-4 bg-blue-900 text-white font-bold rounded-lg hover:bg-blue-800 transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    Envoyer le Message <Send className="w-5 h-5" />
+                    {isSubmitting ? 'Envoi en cours...' : <><span>Envoyer le Message</span><Send className="w-5 h-5" /></>}
                   </button>
                 </form>
               )}
