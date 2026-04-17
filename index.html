@@ -22,7 +22,6 @@
     <meta name="msapplication-TileColor" content="#1E3A8A" />
     
     <!-- Manifest and Icons -->
-    <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
     <link rel="apple-touch-icon" href="/icon-192.png" />
@@ -99,13 +98,11 @@ Error generating stack: `+l.message+`
     <div id="root"></div>
     
     <!-- PWA Installation Handler -->
-    <script src="/pwa-install-handler.js" defer></script>
     
     <!-- Service Worker Registration -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js', {
             scope: '/',
             updateViaCache: 'none',
           }).catch(err => console.error('[SW] Registration failed:', err));
