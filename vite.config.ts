@@ -4,7 +4,8 @@ import { defineConfig } from "vite";
 import path from "node:path";
 
 export default defineConfig({
-  base: "/rising-digital-ia/",
+  root: "client",
+  base: "/",
 
   plugins: [
     react(),
@@ -22,5 +23,11 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
+  },
+
+  server: {
+    host: "0.0.0.0",
+    port: 5000,
+    allowedHosts: true,
   },
 });
